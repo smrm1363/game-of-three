@@ -35,7 +35,7 @@ public class GameService implements GameUseCase {
   }
 
   @Override
-  public Game makeMove(MoveRequest moveRequest)
+  public synchronized Game makeMove(MoveRequest moveRequest)
       throws WrongTurnPlayingException, GameHasNotBeenStarted {
     if (!gameStarted) throw new GameHasNotBeenStarted();
     Player player = findPlayerByName(moveRequest.playerName());
